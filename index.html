@@ -69,7 +69,7 @@
     e.preventDefault();
     canX = e.targetTouches[0].pageX - maze_canvas.offsetLeft;
     canY = e.targetTouches[0].pageY - maze_canvas.offsetTop;
-    maze_context.fillRect(canX, canY, CELL_SIZE/2, CELL_SIZE/2);
+    maze_context.fillRect(canX, canY, CELL_SIZE/4, CELL_SIZE/4);
 }
 function getCursorPosition(e) {
     /* returns Cell with .row and .column properties */
@@ -87,7 +87,7 @@ function getCursorPosition(e) {
     y -= maze_canvas.offsetTop;
     x = Math.min(x, MAZE_WIDTH);
     y = Math.min(y, MAZE_HEIGHT);
-    maze_context.fillRect(x, y, CELL_SIZE/2, CELL_SIZE/2);
+    maze_context.fillRect(x, y, CELL_SIZE/4, CELL_SIZE/4);
 //    var cell = new Cell(Math.floor(y/20), Math.floor(x/20));
 //    return cell;
 }
