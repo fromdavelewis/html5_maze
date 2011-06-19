@@ -2,6 +2,7 @@ Show seed for repeatability.
 Button for new maze instead of reload (should make it available offline).
 Solver/check solution.
 Change color of solver pencil.
+Clear solver pencil to retry.
 
 Other maze algorithms.
 Other maze shapes.
