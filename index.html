@@ -6,6 +6,7 @@
         <script>
             var MAZE_HEIGHT = 400;
             var MAZE_WIDTH = 400;
+            var CELL_SIZE = 20;
             var canvas_element = document.createElement("canvas");
             canvas_element.id = "maze";
             canvas_element.height = MAZE_HEIGHT+1;
@@ -33,24 +34,24 @@
 //            maze_context.strokeStyle = "#fff";
 //            maze_context.stroke();
 
-                divideArea(0.5, 0.5, 400, 400, 20, maze_context);
+                divideArea(0.5, 0.5, MAZE_HEIGHT, MAZE_WIDTH, CELL_SIZE, maze_context);
 
                 // top line
                 maze_context.moveTo(0.5, 0.5);
-                maze_context.lineTo(400.5, 0.5);
+                maze_context.lineTo(MAZE_HEIGHT + 0.5, 0.5);
                 // bottom line
                 maze_context.moveTo(0.5, 400.5);
-                maze_context.lineTo(400.5, 400.5);
+                maze_context.lineTo(MAZE_HEIGHT + 0.5, MAZE_WIDTH + 0.5);
                 // left line
                 maze_context.moveTo(0.5, 0.5);
-                maze_context.lineTo(0.5, 200.5);
-                maze_context.moveTo(0.5, 220.5);
-                maze_context.lineTo(0.5, 400.5);
+                maze_context.lineTo(0.5, MAZE_WIDTH/2 + 0.5);
+                maze_context.moveTo(0.5, MAZE_WIDTH/2 + CELL_SIZE + 0.5);
+                maze_context.lineTo(0.5, MAZE_WIDTH + 0.5);
                 // right line
-                maze_context.moveTo(400.5, 0.5);
-                maze_context.lineTo(400.5, 200.5);
-                maze_context.moveTo(400.5, 220.5);
-                maze_context.lineTo(400.5, 400.5);
+                maze_context.moveTo(MAZE_HEIGHT + 0.5, 0.5);
+                maze_context.lineTo(MAZE_HEIGHT + 0.5, MAZE_WIDTH/2 + 0.5);
+                maze_context.moveTo(MAZE_HEIGHT + 0.5, MAZE_WIDTH/2 + CELL_SIZE + 0.5);
+                maze_context.lineTo(MAZE_HEIGHT + 0.5, MAZE_WIDTH + 0.5);
                 maze_context.strokeStyle = "#000";
                 maze_context.stroke();
 
@@ -68,7 +69,7 @@
     e.preventDefault();
     canX = e.targetTouches[0].pageX - maze_canvas.offsetLeft;
     canY = e.targetTouches[0].pageY - maze_canvas.offsetTop;
-    maze_context.fillRect(canX, canY, 10, 10);
+    maze_context.fillRect(canX, canY, CELL_SIZE/2, CELL_SIZE/2);
 }
 function getCursorPosition(e) {
     /* returns Cell with .row and .column properties */
@@ -84,9 +85,9 @@ function getCursorPosition(e) {
     }
     x -= maze_canvas.offsetLeft;
     y -= maze_canvas.offsetTop;
-    x = Math.min(x, 400);
-    y = Math.min(y, 400);
-    maze_context.fillRect(x, y, 10, 10)
+    x = Math.min(x, MAZE_WIDTH);
+    y = Math.min(y, MAZE_HEIGHT);
+    maze_context.fillRect(x, y, CELL_SIZE/2, CELL_SIZE/2);
 //    var cell = new Cell(Math.floor(y/20), Math.floor(x/20));
 //    return cell;
 }
