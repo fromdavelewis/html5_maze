@@ -18,7 +18,12 @@
             var maze_context = maze_canvas.getContext("2d");
             maze_context.clearRect(0, 0, MAZE_HEIGHT, MAZE_WIDTH);
             drawMaze();
-            
+
+            function newMaze() {
+                maze_canvas.width = maze_canvas.width;
+                drawMaze();
+            }
+
             function drawMaze() {
 
                 Math.seedrandom();
@@ -115,6 +120,7 @@
                 else return Math.round(Math.random());
             }
         </script>
+        <button onClick="newMaze()" type="button">New Maze</button>
         <ul>
             <li>http://www.astrolog.org/labyrnth/algrithm.htm</li>
             <li>http://www.diveintohtml5.org/canvas.html</li>
