@@ -17,16 +17,23 @@
             var maze_canvas = document.getElementById("maze");
             var maze_context = maze_canvas.getContext("2d");
             maze_context.clearRect(0, 0, MAZE_HEIGHT, MAZE_WIDTH);
-            drawMaze();
+            var seed = Math.seedrandom();
+            drawMaze(seed);
 
             function newMaze() {
                 maze_canvas.width = maze_canvas.width;
-                drawMaze();
+                seed = Math.seedrandom();
+                drawMaze(seed);
             }
 
-            function drawMaze() {
+            function clearAttempt() {
+                maze_canvas.width = maze_canvas.width;
+                drawMaze(seed);
+            }
 
-                Math.seedrandom();
+            function drawMaze(seed) {
+
+                Math.seedrandom(seed);
 
                 divideArea(0.5, 0.5, MAZE_HEIGHT, MAZE_WIDTH, CELL_SIZE, maze_context);
 
@@ -120,7 +127,11 @@
                 else return Math.round(Math.random());
             }
         </script>
-        <button onClick="newMaze()" type="button">New Maze</button>
+        <button id="newMazeButton" onClick="newMaze()" type="button">New Maze</button>
+        <button id="clearAttemptButton" onClick="clearAttempt()" type="button">Clear Attempt</button>
+        <button id="showSolutionButton" onClick="showSolution()" type="button">Show Solution</button>
+        <button id="hideSolutionButton" onClick="hideSolution()" type="button">Hide Solution</button>
+
         <ul>
             <li>http://www.astrolog.org/labyrnth/algrithm.htm</li>
             <li>http://www.diveintohtml5.org/canvas.html</li>
