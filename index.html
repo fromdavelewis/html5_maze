@@ -16,9 +16,8 @@
             document.body.appendChild(canvas_element);
             var maze_canvas = document.getElementById("maze");
             var maze_context = maze_canvas.getContext("2d");
-            maze_context.clearRect(0, 0, MAZE_HEIGHT, MAZE_WIDTH);
-            var seed = Math.seedrandom();
-            drawMaze(seed);
+            var seed;
+            newMaze();
 
             function newMaze() {
                 maze_canvas.width = maze_canvas.width;
